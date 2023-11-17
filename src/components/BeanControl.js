@@ -14,6 +14,14 @@ class BeanControl extends React.Component {
     };
   }
 
+  handleDeletingBean = (id) => {
+    const newMainBeanList = this.state.mainBeanList.filter(bean => bean.id != id);
+    this.setState({
+      mainBeanList: newMainBeanList,
+      selectedBean: null
+    });
+  }
+
   handleChangingSelectedBean = (id) => {
     const selectedBean = this.state.mainBeanList.filter(bean => bean.id === id)[0];
     this.setState({selectedBean: selectedBean});
@@ -45,7 +53,7 @@ class BeanControl extends React.Component {
     let buttonText = null;
 
     if(this.state.selectedBean != null) {
-      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} />
+      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingBean} />
       buttonText = "Return to bean list";
     }
     else if (this.state.formVisibleOnPage) {
