@@ -14,7 +14,8 @@ function Bean(props){
 Bean.propTypes = {
   name: PropTypes.string,
   price: PropTypes.string,
-  roast: PropTypes.string
+  roast: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default Bean;

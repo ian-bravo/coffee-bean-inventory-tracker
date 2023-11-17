@@ -7,8 +7,17 @@ class BeanControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainBeanList: []
     };
+  }
+
+  handleAddingNewBeanToList = (newBean) => {
+    const newMainBeanList = this.state.mainBeanList.concat(newBean);
+    this.setState({
+      mainBeanList: newMainBeanList,
+      formVisibleOnPage: false 
+    });
   }
 
   handleClick = () => {
@@ -21,10 +30,10 @@ class BeanControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeanForm />
+      currentlyVisibleState = <NewBeanForm oneNewBeanCreation={this.handleAddingNewBeanToList} />;
       buttonText = "Return to bean list";
     } else {
-      currentlyVisibleState = <BeanList />
+      currentlyVisibleState = <BeanList beanList={this.state.mainBeanList} />;
       buttonText = "Add your beans!!!";
     }
     return (
