@@ -1,6 +1,7 @@
 import React from 'react';
 import NewBeanForm from './NewBeanForm';
 import BeanList from './BeanList';
+import BeanDetail from './BeanDetail';
 
 class BeanControl extends React.Component {
 
@@ -8,8 +9,14 @@ class BeanControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainBeanList: []
+      mainBeanList: [],
+      selectedBean: null
     };
+  }
+
+  handleChangingSelectedBean = (id) => {
+    const selectedBean = this.state.mainBeanList.filter(bean => bean.id === id)[0];
+    this.setState({selectedBean: selectedBean});
   }
 
   handleAddingNewBeanToList = (newBean) => {
@@ -21,19 +28,31 @@ class BeanControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedBean != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedBean: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }  
 
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeanForm oneNewBeanCreation={this.handleAddingNewBeanToList} />;
+
+    if(this.state.selectedBean != null) {
+      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} />
+      buttonText = "Return to bean list";
+    }
+    else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewBeanForm onNewBeanCreation={this.handleAddingNewBeanToList} />;
       buttonText = "Return to bean list";
     } else {
-      currentlyVisibleState = <BeanList beanList={this.state.mainBeanList} />;
+      currentlyVisibleState = <BeanList beanList={this.state.mainBeanList} onBeanSelection={this.handleChangingSelectedBean} />;
       buttonText = "Add your beans!!!";
     }
     return (

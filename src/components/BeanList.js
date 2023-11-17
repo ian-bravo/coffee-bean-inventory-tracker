@@ -8,6 +8,7 @@ function BeanList(props){
       <hr />
       {props.beanList.map((bean) =>
         <Bean 
+          whenBeanClicked = {props.onBeanSelection}
           name={bean.name}
           roast={bean.roast}
           price={bean.price}
@@ -19,7 +20,8 @@ function BeanList(props){
 }
 
 BeanList.propTypes = {
-  beanList: PropTypes.array
+  beanList: PropTypes.array,
+  onBeanSelection: PropTypes.func
 };
 
 export default BeanList;
