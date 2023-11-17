@@ -3,7 +3,10 @@ import Bean from "./Bean";
 
 function BeanList(){
   return (
-    <Bean />
+    <Bean 
+      name="ESN"
+      price="16"
+      roast="dark"/>
   );
 }
 

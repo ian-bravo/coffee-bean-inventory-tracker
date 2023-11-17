@@ -1,13 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Bean(){
-  const name = "Thato";
-  const name2 = "Haley";
+function Bean(props){
   return (
     <React.Fragment>
-      <h1>sample bean</h1>
+      <h3>{props.name} - {props.roast}</h3>
+      <h4>{props.price}</h4>
+      <hr/>
     </React.Fragment>
   );
 }
+
+Bean.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.string,
+  roast: PropTypes.string
+};
 
 export default Bean;
