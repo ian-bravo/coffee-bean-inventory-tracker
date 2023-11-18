@@ -11,6 +11,7 @@ function EditBeanForm (props) {
       name: event.target.name.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
+      lbs: event.target.lbs.value,
       id: bean.id
     });
   }

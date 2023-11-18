@@ -12,6 +12,7 @@ function BeanList(props){
           name={bean.name}
           roast={bean.roast}
           price={bean.price}
+          lbs={bean.lbs}
           id={bean.id}
           key={bean.id} />
       )}
