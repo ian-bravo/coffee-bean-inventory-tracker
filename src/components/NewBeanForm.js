@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { v4 } from 'uuid';
+import ReusableForm from "./ReusableForm";
 
 function NewBeanForm(props){
 
@@ -16,21 +17,9 @@ function NewBeanForm(props){
 
   return (
     <React.Fragment>
-      <form onSubmit={handleNewBeanFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='Bean name' />
-        <input
-          type='text'
-          name='roast'
-          placeholder='Roast type' />
-        <input
-          type='text'
-          name='price'
-          placeholder='$/lb.' />
-        <button type='submit'>Add</button>
-      </form>
+      <ReusableForm
+        formSubmissionHandler={handleNewBeanFormSubmission}
+        buttonText="Add coffee beans!!" />
     </React.Fragment>
   );
 }
