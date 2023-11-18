@@ -11,7 +11,8 @@ class BeanControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainBeanList: [],
-      selectedBean: null
+      selectedBean: null,
+      editing: false
     };
   }
 
@@ -27,7 +28,6 @@ class BeanControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("edit");
     this.setState({editing: true});
   }
 
@@ -73,9 +73,14 @@ class BeanControl extends React.Component {
 
     if (this.state.editing) {
       currentlyVisibleState = <EditBeanForm bean = {this.state.selectedBean} onEditBean = {this.handleEditingBeanInList} />
+      buttonText= "Return to bean list";
     } 
     else if(this.state.selectedBean != null) {
-      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingBean} onClickingEdit = {this.handleEditClick} />
+      currentlyVisibleState = 
+      <BeanDetail 
+        bean = {this.state.selectedBean} 
+        onClickingDelete = {this.handleDeletingBean} 
+        onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to bean list";
     }
     else if (this.state.formVisibleOnPage) {
