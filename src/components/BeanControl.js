@@ -2,6 +2,7 @@ import React from 'react';
 import NewBeanForm from './NewBeanForm';
 import BeanList from './BeanList';
 import BeanDetail from './BeanDetail';
+import EditBeanForm from './EditBeanForm';
 
 class BeanControl extends React.Component {
 
@@ -14,11 +15,28 @@ class BeanControl extends React.Component {
     };
   }
 
+  handleEditingBeanInList = (beanToEdit) => {
+    const editedMainBeanList = this.state.mainBeanList
+          .filter(bean => bean.id !== this.state.selectedBean.id)
+          .concat(beanToEdit);
+    this.setState({
+      mainBeanList: editedMainBeanList,
+      editing: false,
+      selectedBean: null
+    });
+  }
+
+  handleEditClick = () => {
+    console.log("edit");
+    this.setState({editing: true});
+  }
+
   handleDeletingBean = (id) => {
     const newMainBeanList = this.state.mainBeanList.filter(bean => bean.id != id);
     this.setState({
       mainBeanList: newMainBeanList,
-      selectedBean: null
+      selectedBean: null,
+      editing: false
     });
   }
 
@@ -39,7 +57,8 @@ class BeanControl extends React.Component {
     if (this.state.selectedBean != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedBean: null
+        selectedBean: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({
@@ -52,8 +71,11 @@ class BeanControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if(this.state.selectedBean != null) {
-      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingBean} />
+    if (this.state.editing) {
+      currentlyVisibleState = <EditBeanForm bean = {this.state.selectedBean} onEditBean = {this.handleEditingBeanInList} />
+    } 
+    else if(this.state.selectedBean != null) {
+      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingBean} onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to bean list";
     }
     else if (this.state.formVisibleOnPage) {
