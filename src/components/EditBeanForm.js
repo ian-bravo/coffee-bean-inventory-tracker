@@ -11,9 +11,13 @@ function EditBeanForm (props) {
       name: event.target.name.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
+      id: bean.id
+    });
+    props.onClickingDecrement({
       lbs: event.target.lbs.value,
       id: bean.id
     });
+    
   }
   return (
     <React.Fragment>
@@ -26,7 +30,8 @@ function EditBeanForm (props) {
 
 EditBeanForm.propTypes = {
   bean: PropTypes.object,
-  onEditBean: PropTypes.func
+  onEditBean: PropTypes.func,
+  onClickingDecrement: PropTypes.func
 };
 
 export default EditBeanForm;

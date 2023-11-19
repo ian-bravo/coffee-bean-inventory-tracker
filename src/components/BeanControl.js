@@ -18,7 +18,19 @@ class BeanControl extends React.Component {
 
 
   handleDecrementBean = (beanToEdit) => {
-    beanToEdit.lbs--;
+    const newValueAfterSale = this.state.mainBeanList
+          .filter(bean => bean.id !== this.state.selectedBean.id)
+          .concat(beanToEdit);
+
+    if (this.state.lbs > 0) {
+      newValueAfterSale.lbs--;
+    }
+
+    this.setState({
+      mainBeanList: newValueAfterSale,
+      selectedBean: null
+    });
+    // beanToEdit.lbs--;
     //add -- function, with not allowing negative #s,
   }
 
@@ -101,8 +113,6 @@ class BeanControl extends React.Component {
       currentlyVisibleState = 
       <NewBeanForm 
         onNewBeanCreation={this.handleAddingNewBeanToList} />;
-        // staticPounds={130} />;
-        
       buttonText = "Return to bean list";
     } else {
       currentlyVisibleState = 
