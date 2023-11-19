@@ -11,7 +11,7 @@ function NewBeanForm(props){
       name: event.target.name.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
-      
+      lbs: 130,
       id: v4()
     });
   };
@@ -26,8 +26,7 @@ function NewBeanForm(props){
 }
 
 NewBeanForm.propTypes = {
-  onNewBeanCreation: PropTypes.func,
-  // staticPounds: PropTypes.string
+  onNewBeanCreation: PropTypes.func
 };
 
 export default NewBeanForm;

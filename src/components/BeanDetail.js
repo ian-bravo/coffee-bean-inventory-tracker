@@ -10,8 +10,7 @@ function BeanDetail(props){
       <h4>{bean.name}</h4>
       <h4>{bean.roast}</h4>
       <h4>{bean.price}</h4>
-      <h4>{bean.lbs}</h4>
-      {/*<button onClick={ -decrement }>Subtract 1 lb of coffee</button> edit*/}
+      <h4>{bean.lbs}</h4> {/*<button onClick={ -decrement }>Subtract 1 lb of coffee</button> edit*/}
       <button onClick={ props.onClickingEdit }>Update Bean</button>
       <button onClick={()=> onClickingDelete(bean.id) }>Delete Bean</button>
       <hr/>

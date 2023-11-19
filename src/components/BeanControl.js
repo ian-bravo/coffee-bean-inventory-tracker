@@ -16,7 +16,6 @@ class BeanControl extends React.Component {
     };
   }
 
-  // handleIncrementBean
 
   handleDecrementBean = (beanToEdit) => {
     beanToEdit.lbs--;
@@ -39,7 +38,8 @@ class BeanControl extends React.Component {
   }
 
   handleDeletingBean = (id) => {
-    const newMainBeanList = this.state.mainBeanList.filter(bean => bean.id != id);
+    const newMainBeanList = this.state.mainBeanList
+          .filter(bean => bean.id != id);
     this.setState({
       mainBeanList: newMainBeanList,
       selectedBean: null,
@@ -48,12 +48,14 @@ class BeanControl extends React.Component {
   }
 
   handleChangingSelectedBean = (id) => {
-    const selectedBean = this.state.mainBeanList.filter(bean => bean.id === id)[0];
+    const selectedBean = this.state.mainBeanList
+          .filter(bean => bean.id === id)[0];
     this.setState({selectedBean: selectedBean});
   }
 
   handleAddingNewBeanToList = (newBean) => {
-    const newMainBeanList = this.state.mainBeanList.concat(newBean);
+    const newMainBeanList = this.state.mainBeanList
+          .concat(newBean);
     this.setState({
       mainBeanList: newMainBeanList,
       formVisibleOnPage: false,

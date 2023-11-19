@@ -19,7 +19,7 @@ Bean.propTypes = {
   name: PropTypes.string,
   price: PropTypes.string,
   roast: PropTypes.string,
-  lbs: PropTypes.string,
+  lbs: PropTypes.number,
   id: PropTypes.string,
   whenBeanClicked: PropTypes.func
 };
