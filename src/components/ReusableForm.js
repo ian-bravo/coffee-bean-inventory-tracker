@@ -17,12 +17,9 @@ function ReusableForm(props) {
           type='text'
           name='price'
           placeholder='Price per lb' />
-        <input
-          type='text'
-          name='lbs'
-          placeholder='Current amount of Coffee in lbs' />
         <button type='submit'>{props.buttonText}</button>
       </form>
+      
     </React.Fragment>
   );
 }

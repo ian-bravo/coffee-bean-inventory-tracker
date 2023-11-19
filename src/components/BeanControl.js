@@ -12,8 +12,15 @@ class BeanControl extends React.Component {
       formVisibleOnPage: false,
       mainBeanList: [],
       selectedBean: null,
-      editing: false
+      editing: false,
     };
+  }
+
+  // handleIncrementBean
+
+  handleDecrementBean = (beanToEdit) => {
+    beanToEdit.lbs--;
+    //add -- function, with not allowing negative #s,
   }
 
   handleEditingBeanInList = (beanToEdit) => {
@@ -49,7 +56,8 @@ class BeanControl extends React.Component {
     const newMainBeanList = this.state.mainBeanList.concat(newBean);
     this.setState({
       mainBeanList: newMainBeanList,
-      formVisibleOnPage: false 
+      formVisibleOnPage: false,
+      lbs: 130
     });
   }
 
@@ -72,7 +80,11 @@ class BeanControl extends React.Component {
     let buttonText = null;
 
     if (this.state.editing) {
-      currentlyVisibleState = <EditBeanForm bean = {this.state.selectedBean} onEditBean = {this.handleEditingBeanInList} />
+      currentlyVisibleState = 
+      <EditBeanForm 
+        bean = {this.state.selectedBean} 
+        onEditBean = {this.handleEditingBeanInList}
+        onClickingDecrement = {this.handleDecrementBean} />
       buttonText= "Return to bean list";
     } 
     else if(this.state.selectedBean != null) {
@@ -84,10 +96,17 @@ class BeanControl extends React.Component {
       buttonText = "Return to bean list";
     }
     else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeanForm onNewBeanCreation={this.handleAddingNewBeanToList} />;
+      currentlyVisibleState = 
+      <NewBeanForm 
+        onNewBeanCreation={this.handleAddingNewBeanToList} />;
+        // staticPounds={130} />;
+        
       buttonText = "Return to bean list";
     } else {
-      currentlyVisibleState = <BeanList beanList={this.state.mainBeanList} onBeanSelection={this.handleChangingSelectedBean} />;
+      currentlyVisibleState = 
+      <BeanList 
+        beanList={this.state.mainBeanList} 
+        onBeanSelection={this.handleChangingSelectedBean} />;
       buttonText = "Add your beans!!!";
     }
     return (
