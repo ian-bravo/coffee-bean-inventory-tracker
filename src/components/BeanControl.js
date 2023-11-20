@@ -16,23 +16,19 @@ class BeanControl extends React.Component {
     };
   }
 
-  handleDecrementBean() {
-    // const beanAfterEdit = {
-    //   ...this.state.selectedBean,
-    //   lbs: this.state.selectedBean.lbs - 1,
-    // };
-    // immutable state update pattern
-    this.setState((currentState => ({
-      mainBeanList: currentState.mainBeanList.map(bean => {
-        if (bean.id === currentState.selectedBean.id) {
-          return {
-            ...bean,
-            lbs: bean.lbs - 1,
-          };
-        }
-        return bean;
-      })
-    })))
+  handleDecrementBean = (id) => {
+    const updatedMainBeanList = this.state.mainBeanList.map((bean) => {
+      if (bean.id === id && bean.lbs > 0) {
+        return { ...bean, lbs: bean.lbs - 1 };
+      }
+      return bean;
+    });
+  
+    this.setState({
+      mainBeanList: updatedMainBeanList,
+      editing: false,
+      selectedBean: { ...this.state.selectedBean, lbs: this.state.selectedBean.lbs - 1 },
+    });
   }
 
   handleEditingBeanInList = (beanToEdit) => {
