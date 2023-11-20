@@ -16,22 +16,23 @@ class BeanControl extends React.Component {
     };
   }
 
-
-  handleDecrementBean = (beanToEdit) => {
-    const newValueAfterSale = this.state.mainBeanList
-          .filter(bean => bean.id !== this.state.selectedBean.id)
-          .concat(beanToEdit);
-
-    if (this.state.lbs > 0) {
-      newValueAfterSale.lbs--;
-    }
-
-    this.setState({
-      mainBeanList: newValueAfterSale,
-      selectedBean: null
-    });
-    // beanToEdit.lbs--;
-    //add -- function, with not allowing negative #s,
+  handleDecrementBeanQ() {
+    // const beanAfterEdit = {
+    //   ...this.state.selectedBean,
+    //   lbs: this.state.selectedBean.lbs - 1,
+    // };
+    // immutable state update pattern
+    this.setState((currentState => ({
+      mainBeanList: currentState.mainBeanList.map(bean => {
+        if (bean.id === currentState.selectedBean.id) {
+          return {
+            ...bean,
+            lbs: bean.lbs - 1,
+          };
+        }
+        return bean;
+      })
+    })))
   }
 
   handleEditingBeanInList = (beanToEdit) => {
@@ -70,8 +71,7 @@ class BeanControl extends React.Component {
           .concat(newBean);
     this.setState({
       mainBeanList: newMainBeanList,
-      formVisibleOnPage: false,
-      lbs: 130
+      formVisibleOnPage: false
     });
   }
 
@@ -97,19 +97,17 @@ class BeanControl extends React.Component {
       currentlyVisibleState = 
       <EditBeanForm 
         bean = {this.state.selectedBean} 
-        onEditBean = {this.handleEditingBeanInList}
-        onClickingDecrement = {this.handleDecrementBean} />
+        onEditBean = {this.handleEditingBeanInList} />
       buttonText= "Return to bean list";
-    } 
-    else if(this.state.selectedBean != null) {
+    } else if (this.state.selectedBean != null) {
       currentlyVisibleState = 
       <BeanDetail 
         bean = {this.state.selectedBean} 
         onClickingDelete = {this.handleDeletingBean} 
-        onClickingEdit = {this.handleEditClick} />
+        onClickingEdit = {this.handleEditClick}
+        onClickingDecrement = {this.handleDecrementBean} />
       buttonText = "Return to bean list";
-    }
-    else if (this.state.formVisibleOnPage) {
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = 
       <NewBeanForm 
         onNewBeanCreation={this.handleAddingNewBeanToList} />;

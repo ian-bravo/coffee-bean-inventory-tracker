@@ -11,7 +11,7 @@ function NewBeanForm(props){
       name: event.target.name.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
-      lbs: 130,
+      lbs: event.target.lbs.value,
       id: v4()
     });
   };

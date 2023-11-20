@@ -5,8 +5,9 @@ import BeanControl from "./BeanControl";
 function App(){
   return ( 
     <React.Fragment>
-      <Header />
+      
       <BeanControl />
+      <Header />
     </React.Fragment>
   );
 }

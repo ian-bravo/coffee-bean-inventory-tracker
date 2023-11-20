@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function BeanDetail(props){
-  const { bean, onClickingDelete } = props;
+  const { bean, onClickingDelete, onClickingDecrement } = props;
 
   return (
     <React.Fragment>
@@ -11,8 +11,7 @@ function BeanDetail(props){
       <h4>{bean.roast}</h4>
       <h4>{bean.price}</h4>
       <h4>{bean.lbs}</h4>
-       {/*<button onClick={ -decrement }>Subtract 1 lb of coffee</button> edit*/}
-       <button onClickingDecrement={()=> onClickingDecrement(bean.id)}>Sell 1 lb!</button>
+      <button onClick={() => onClickingDecrement(bean.id)}>Sell 1 lb!</button>
       <button onClick={ props.onClickingEdit }>Update Bean</button>
       <button onClick={()=> onClickingDelete(bean.id) }>Delete Bean</button>
       <hr/>
