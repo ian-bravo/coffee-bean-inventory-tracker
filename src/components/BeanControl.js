@@ -16,7 +16,7 @@ class BeanControl extends React.Component {
     };
   }
 
-  handleDecrementBeanQ() {
+  handleDecrementBean() {
     // const beanAfterEdit = {
     //   ...this.state.selectedBean,
     //   lbs: this.state.selectedBean.lbs - 1,
