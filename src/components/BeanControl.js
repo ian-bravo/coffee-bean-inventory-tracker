@@ -24,11 +24,13 @@ class BeanControl extends React.Component {
       return bean;
     });
   
-    this.setState({
-      mainBeanList: updatedMainBeanList,
-      editing: false,
-      selectedBean: { ...this.state.selectedBean, lbs: this.state.selectedBean.lbs - 1 },
-    });
+    if (this.state.selectedBean && this.state.selectedBean.lbs >0) {
+      this.setState({
+        mainBeanList: updatedMainBeanList,
+        editing: false,
+        selectedBean: { ...this.state.selectedBean, lbs: this.state.selectedBean.lbs - 1 },
+      });
+    }
   }
 
   handleEditingBeanInList = (beanToEdit) => {
@@ -94,7 +96,7 @@ class BeanControl extends React.Component {
       <EditBeanForm 
         bean = {this.state.selectedBean} 
         onEditBean = {this.handleEditingBeanInList} />
-      buttonText= "Return to bean list";
+      buttonText= "Return to in-stock coffee beans";
     } else if (this.state.selectedBean != null) {
       currentlyVisibleState = 
       <BeanDetail 
@@ -102,18 +104,18 @@ class BeanControl extends React.Component {
         onClickingDelete = {this.handleDeletingBean} 
         onClickingEdit = {this.handleEditClick}
         onClickingDecrement = {this.handleDecrementBean} />
-      buttonText = "Return to bean list";
+      buttonText = "Return to in-stock coffee beans";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = 
       <NewBeanForm 
         onNewBeanCreation={this.handleAddingNewBeanToList} />;
-      buttonText = "Return to bean list";
+      buttonText = "Return to in-stock coffee beans";
     } else {
       currentlyVisibleState = 
       <BeanList 
         beanList={this.state.mainBeanList} 
         onBeanSelection={this.handleChangingSelectedBean} />;
-      buttonText = "Add your beans!!!";
+      buttonText = "Add stock";
     }
     return (
       <React.Fragment>

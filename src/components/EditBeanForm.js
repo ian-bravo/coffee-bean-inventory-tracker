@@ -14,21 +14,20 @@ function EditBeanForm (props) {
       lbs: event.target.lbs.value,
       id: bean.id
     });
-    
   }
   return (
     <React.Fragment>
       <ReusableForm 
         formSubmissionHandler={handleEditBeanFormSubmission}
-        buttonText="Update coffee beans" />
+        buttonText="Update coffee beans"
+        showLbsInput={false} />
     </React.Fragment>
   );
 }
 
 EditBeanForm.propTypes = {
   bean: PropTypes.object,
-  onEditBean: PropTypes.func,
-  
+  onEditBean: PropTypes.func
 };
 
 export default EditBeanForm;

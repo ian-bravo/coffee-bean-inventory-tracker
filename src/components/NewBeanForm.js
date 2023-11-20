@@ -20,7 +20,8 @@ function NewBeanForm(props){
     <React.Fragment>
       <ReusableForm
         formSubmissionHandler={handleNewBeanFormSubmission}
-        buttonText="Add coffee beans!!" />
+        buttonText="Add stock"
+        showLbsInput={true} />
     </React.Fragment>
   );
 }

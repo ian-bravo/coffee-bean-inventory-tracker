@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# _Coffee Bean Inventory Tracker using React_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By _**Ian Bravo**_
 
-## Available Scripts
+#### _This web application uses React to create a inventory system to track different stocks of coffee beans._
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+* _HTML_
+* _CSS_
+* _JavaScript_
+* _React_
+* _npm v8.1.2_
+* _node v16.13.1_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This web application utilizes React to manage and track the user's inventoried coffee beans. This application has full CRUD functionality. After creating an order, the user can click on the the order to view it's details. In this list of coffee bean orders, the user will view the submitted values with no references (i.e. 'Coffee bean name: ' will not be present); the functionality to include these details is a work in progress. This will allow the user to decrement the total amount of the coffee beans by 1 without going below zero. The user will also be able to edit all fields of the original order, including the initial amount, see known bugs. The user will also be able to delete the order.
 
-### `npm test`
+## Component Diagram
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="./src/img/component-diagram.png" alt="component diagram">
 
-### `npm run build`
+## Setup/Installation Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Open Terminal.
+2. Change your directory to where you would want the cloned directory.
+3. Input the following command into your terminal:  
+ `$ git clone https://github.com/ian-bravo/coffee-bean-inventory-tracker`
+4. Navigate to the top level of this newly cloned directory.
+5. Install all packages with `$ npm install`
+6. Build the project using webpack with `$ npm run build`
+7. Start a development server with `$ npm run start`
+8. Lint JS files in the src folder with `$ npm run lint`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Known Bugs
 
-### `npm run eject`
+* _'Initial amount' input field appears in edit form when it should not._
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+MIT License  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Copyright (c) 17-Nov-2023 Ian Bravo  
 
-## Learn More
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_For questions or concerns, please email me at bravo.ian@gmail.com_
