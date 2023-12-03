@@ -50,7 +50,7 @@ class BeanControl extends React.Component {
 
   handleDeletingBean = (id) => {
     const newMainBeanList = this.state.mainBeanList
-          .filter(bean => bean.id != id);
+          .filter(bean => bean.id !== id);
     this.setState({
       mainBeanList: newMainBeanList,
       selectedBean: null,

@@ -5,7 +5,7 @@ function Header(){
   return (
     <React.Fragment>
       <h1>~Coffee Bean Tracker~</h1>
-      <img src={beanImage} alt="An image of beans" />
+      <img src={beanImage} alt="coffee tasting" />
     </React.Fragment>
   );
 }
